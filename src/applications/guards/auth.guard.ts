@@ -35,7 +35,7 @@ export class AuthGuard implements CanActivate {
 
     const user = await this.userRepository.getByToken(token);
     if (!user) {
-      throw new UnauthorizedException('Invalid or expired token');
+      throw new UnauthorizedException('Invalid token');
     }
 
     (request as any).user = user;
