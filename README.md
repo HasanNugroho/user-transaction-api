@@ -75,6 +75,15 @@ docker-compose up -d
 
 This project uses **Swagger** for API documentation. you can access the documentation at: **[http://localhost:3000/api](http://localhost:3000/api)**
 
+## API Endpoints
+
+| Method | Endpoint               | Deskripsi                                  | Autentikasi     |
+| ------ | ---------------------- | ------------------------------------------ | --------------- |
+| POST   | `/register`            | Register user baru                         | ❌              |
+| POST   | `/login`               | Login user, return token                   | ❌              |
+| GET    | `/transaction`         | Lihat riwayat transaksi user               | ✅ Bearer Token |
+| POST   | `/transaction/process` | Buat atau update transaksi (dengan `?id=`) | ✅ Bearer Token |
+
 ## Structures
 
 ```
@@ -142,14 +151,17 @@ user-transaction-api
 └── tsconfig.json
 ```
 
-## API Endpoints
+## Architecture
 
-| Method | Endpoint               | Deskripsi                                  | Autentikasi     |
-| ------ | ---------------------- | ------------------------------------------ | --------------- |
-| POST   | `/register`            | Register user baru                         | ❌              |
-| POST   | `/login`               | Login user, return token                   | ❌              |
-| GET    | `/transaction`         | Lihat riwayat transaksi user               | ✅ Bearer Token |
-| POST   | `/transaction/process` | Buat atau update transaksi (dengan `?id=`) | ✅ Bearer Token |
+This project follows Domain-Driven Design (DDD) with clear separation of concerns:
+
+- Domain: Business models and repository/service interfaces
+- Application: Business service implementations
+- Infrastructure: ORM entities and repository implementations
+- Presentation: Controllers and HTTP DTOs
+- Common: Utilities, decorators, and filters
+
+This structure helps maintain modularity, scalability, and easier code management.
 
 ## Credits
 
