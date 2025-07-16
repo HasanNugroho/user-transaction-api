@@ -18,7 +18,7 @@ services:
 
   psql_bp:
     image: postgres:latest
-    container_name: postgres_db
+    container_name: postgres
     restart: unless-stopped
     environment:
       POSTGRES_DB: ${DB_NAME}
